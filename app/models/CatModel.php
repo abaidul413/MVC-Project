@@ -12,9 +12,17 @@
     public function catList()
     {
     	return array(
+    	    array(
     		'catone'   => 'Education' , 
     		'cattwo'   => 'Sports' , 
-    		'catthree' => 'Health'  
+    		'catthree' => 'Health'
+    		),
+	        array(
+			'catone'   => 'Education' , 
+			'cattwo'   => 'Sports' , 
+			'catthree' => 'Health'
+			) 
+
     		);
     }
    

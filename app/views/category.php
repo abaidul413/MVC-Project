@@ -44,7 +44,7 @@ input[type="submit"]{cursor: pointer}
       <hr/>
 
 <?php
-foreach($data as $key )
+foreach($cat as $key )
 {
 	echo $key['catone']."<br>";
 	echo $key['cattwo']."<br>";
