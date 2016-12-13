@@ -36,9 +36,9 @@
 
     public function insertCategory()
     {
-    	$table = "tbl_catergory";
+    	$table    = "tbl_catergory";
         $cat_name = $_POST['cat_name'];
-        $title = $_POST['title'];
+        $title    = $_POST['title'];
 
     	$data  = array(
     		   'cat_name' => $cat_name,
@@ -66,6 +66,14 @@
     		);
     	$catModel = $this->load->model("CatModel");
     	$catModel->updateCategory($table, $data, $cond);
+    }
+
+    public function deleteCategoryById()
+    {
+    	$table = "tbl_catergory";
+    	$cond = "id=10";
+    	$catModel = $this->load->model("CatModel");
+    	$catModel->delCategoryById($table, $cond);
     }
  }
 

@@ -47,6 +47,11 @@
     {
     	return $this->db->update($table, $data, $cond);
     }
+
+    public function delCategoryById($table, $cond)
+    {
+    	return $this->db->delete($table, $cond);
+    }
    
   }
 

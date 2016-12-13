@@ -28,7 +28,7 @@ class Database extends PDO{
 
 	public function insert($table, $data)
 	{
-       $keys   = implode(",",array_keys($data));
+       $keys   = implode(",", array_keys($data));
        $values = ":" .implode(", :",array_keys($data));
 
        $sql  = "INSERT INTO $table($keys) VALUES($values)";
@@ -54,6 +54,12 @@ class Database extends PDO{
         $stmt->bindParam(":$key", $value);
        }
        return $stmt->execute();
+	}
+
+	public function delete($table, $cond, $limit = 1)
+	{
+       $sql = "DELETE FROM $table WHERE $cond LIMIT $limit";
+       return $this->exec($sql);
 	}
 }
 
