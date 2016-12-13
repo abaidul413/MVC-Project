@@ -2,6 +2,8 @@
 <?php 
  include 'system/libs/Main.php';
  include 'system/libs/MainController.php';
+ include 'system/libs/MainModel.php';
+ include 'system/libs/Database.php';
  include 'system/libs/Load.php';
  
  $url = isset($_GET['url']) ? $_GET['url'] : NULL;
