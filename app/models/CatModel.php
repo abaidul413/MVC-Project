@@ -37,6 +37,11 @@
  */
 
     }
+
+    public function catInsert($table, $data)
+    {
+    	return $this->db->insert($table, $data);
+    }
    
   }
 

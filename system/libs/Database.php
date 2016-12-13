@@ -25,6 +25,20 @@ class Database extends PDO{
 		return $query->fetchAll();
 */
 	} 
+
+	public function insert($table, $data)
+	{
+       $keys   = implode(",",array_keys($data));
+       $values = ":".implode(", :",array_keys($data));
+
+       $sql  = "INSERT INTO $table($keys) VALUES($values)";
+       $stmt = $this->prepare($sql);
+
+       foreach($data as $key => $value) {
+        $stmt->bindParam(":$key", $value);
+       }
+       return $stmt->execute();
+	}
 }
 
 ?>
