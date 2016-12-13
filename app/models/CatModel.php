@@ -42,6 +42,11 @@
     {
     	return $this->db->insert($table, $data);
     }
+
+    public function updateCategory($table, $data, $cond)
+    {
+    	return $this->db->update($table, $data, $cond);
+    }
    
   }
 
