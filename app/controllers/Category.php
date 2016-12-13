@@ -56,16 +56,37 @@
        $this->load->view('addCategory', $message);
     }
 
+    public function updateCategory()
+    {
+    	$table = "tbl_catergory";
+    	$id    = 2;
+    	$data  = array();
+    	$catModel = $this->load->model("CatModel");
+    	$data['updatecatById'] = $catModel->catById($table, $id);
+    	$this->load->view("updateCate",$data);
+    }
+
     public function categoryUpdate()
     {
     	$table = "tbl_catergory";
-    	$cond = "id=5";
-    	$data = array(
-    		    'cat_name' => 'Movie',
-    		    'title'    => 'MovieCatergory'
+    	$cat_name = $_POST['cat_name'];
+    	$title    = $_POST['title'];
+    	$id       = $_POST['id'];
+
+    	$cond  = "id=$id";
+    	$data  = array(
+    		    'cat_name' => $cat_name,
+    		    'title'    => $title
     		);
     	$catModel = $this->load->model("CatModel");
-    	$catModel->updateCategory($table, $data, $cond);
+    	$result   = $catModel->updateCategory($table, $data, $cond);
+    	$message  =array();
+    	if ($result == 1) {
+    		$message['msg'] = "Category Updated Successfully!!";
+    	} else {
+    		$message['msg'] = "Failed To Update Category!!";
+    	}
+       $this->load->view("updateCate",$message);	
     }
 
     public function deleteCategoryById()
