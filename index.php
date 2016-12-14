@@ -4,6 +4,8 @@ spl_autoload_register(function($calss_name){
     include "system/libs/".$calss_name.".php";
 });
 
+include 'app/Config/config.php';
+
  // include 'system/libs/Main.php';
  // include 'system/libs/MainController.php';
  // include 'system/libs/MainModel.php';

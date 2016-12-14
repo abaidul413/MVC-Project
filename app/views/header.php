@@ -45,6 +45,13 @@ input[type="submit"]{cursor: pointer}
 }
 .widget ul li a:hover{background: #71c1ff}
 
+.details{}
+.title{border-bottom: 1px dashed #ddd; }
+.title h2{margin:0px;}
+.title p{margin:0px; padding: 5px 0px;}
+.desc{}
+.desc p{line-height: 24px; text-align: justify;}
+
 .footeroption{height:90px;background:#177de3;overflow:hidden;padding-top:10px;}
 .footerone {background: #3aa0ff;border-radius: 5px;float: left;font-size:18px;line-height:23px;margin-left: 10px;padding:6px 10px;text-align:center;text-shadow: 1px 0 2px #fff;width:390px;overflow: hidden;}
 .footerone p{margin:0;}
@@ -54,3 +61,4 @@ input[type="submit"]{cursor: pointer}
   <header class="headeroption">
     <h2>Advanced PHP OOP Tutorial [MVC Framework]</h2>
   </header>
+<div class="content">
