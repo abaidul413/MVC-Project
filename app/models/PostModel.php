@@ -27,6 +27,12 @@ class PostModel extends MainModel
 		$sql = "SELECT $tablePost.*, $tableCat.cat_name FROM $tablePost INNER JOIN $tableCat ON $tablePost.category = $tableCat.id WHERE $tableCat.id = $id";
 		return $this->db->select($sql);
 	}
+
+	public function getLeatestPost( $table)
+	{
+		$sql = "select * from $table order by id desc limit 5";
+		return $this->db->select($sql);
+	}
 }
 
 ?>

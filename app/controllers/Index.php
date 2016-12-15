@@ -19,8 +19,12 @@
         $postModel = $this->load->model("PostModel");
         $data['allPost'] = $postModel->getAllPost($table);
     	$this->load->view('content', $data);
-
-    	$this->load->view('saidbar');
+        
+        $tableCat = "tbl_catergory";
+        $catModel = $this->load->model("CatModel");
+        $data['catList'] = $catModel->catList($tableCat);
+        $data['leatestPost'] = $postModel->getLeatestPost( $table);
+    	$this->load->view('saidbar', $data);
     	$this->load->view('footer');
     }
 
@@ -34,8 +38,11 @@
        $postModel = $this->load->model("PostModel");
        $data['postById'] = $postModel->getPostById($tablePost, $tableCat, $id);
        $this->load->view("postDetails",$data);
-
-       $this->load->view('saidbar');
+       
+       $catModel = $this->load->model("CatModel");
+       $data['catList'] = $catModel->catList($tableCat);
+       $data['leatestPost'] = $postModel->getLeatestPost( $tablePost);
+       $this->load->view('saidbar', $data);
        $this->load->view('footer');
 
     }
@@ -49,8 +56,11 @@
        $postModel = $this->load->model("PostModel");
        $data['postByCat'] = $postModel->postByCat($tablePost, $tableCat, $id);
        $this->load->view("allPostByCat", $data);
-
-       $this->load->view('saidbar');
+       
+       $catModel = $this->load->model("CatModel");
+       $data['catList'] = $catModel->catList($tableCat);
+       $data['leatestPost'] = $postModel->getLeatestPost( $tablePost);
+       $this->load->view('saidbar', $data);
        $this->load->view('footer');
     }
   
