@@ -52,6 +52,15 @@ input[type="submit"]{cursor: pointer}
 .desc{}
 .desc p{line-height: 24px; text-align: justify;}
 
+.serachoption{border-bottom: 2px dashed #3399FF; margin-bottom:15px; padding-bottom: 5px; overflow: hidden;}
+.menu{float: left;}
+.menu a {
+	text-decoration: none;background: #999;border: 1px solid #ddd;font-size: 21px;color: #000;padding: 4px 9px;cursor: pointer;display: block;
+}
+.search{float: right;}
+.catsearch{border: 1px solid #ddd;margin-bottom: 5px;padding: 5px;width: 228px;font-size: 16px; cursor: pointer;}
+.submitbtn{cursor: pointer;font-size: 18px;padding: 1px 3px;}
+
 .footeroption{height:90px;background:#177de3;overflow:hidden;padding-top:10px;}
 .footerone {background: #3aa0ff;border-radius: 5px;float: left;font-size:18px;line-height:23px;margin-left: 10px;padding:6px 10px;text-align:center;text-shadow: 1px 0 2px #fff;width:390px;overflow: hidden;}
 .footerone p{margin:0;}

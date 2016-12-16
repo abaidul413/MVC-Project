@@ -1,6 +1,4 @@
 
-Home
-<hr/>
 <div class="postcontent">
  <?php
    foreach ($postByCat as $key => $value) {

@@ -13,6 +13,7 @@
     public function home()
     {
     	$this->load->view('header');
+    	$this->load->view('search');
         
         $data = array();
         $table = "tbl_post";
@@ -31,6 +32,7 @@
     public function postDetails($id)
     {
        $this->load->view('header');
+       $this->load->view('search');
 
        $data = array();
        $tablePost = "tbl_post";
@@ -50,6 +52,8 @@
     public function getPostByCat($id)
     {
        $this->load->view('header');
+       $this->load->view('search');
+       
        $data = array();
        $tablePost = "tbl_post";
        $tableCat  = "tbl_catergory";

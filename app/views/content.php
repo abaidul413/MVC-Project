@@ -1,6 +1,4 @@
 
-Home
-<hr/>
 <div class="postcontent">
  <?php
    foreach ($allPost as $key => $value) {
