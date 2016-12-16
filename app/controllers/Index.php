@@ -10,6 +10,11 @@
  		parent::__construct();
  	}
 
+ 	public function Index()
+ 	{
+ 		$this->home();
+ 	}
+
     public function home()
     {
     	$data = array();
