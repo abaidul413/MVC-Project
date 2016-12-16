@@ -72,7 +72,29 @@
        $this->load->view('footer');
     }
   
+    public function search()
+    {
+       $data = array();
+       
+       $keyword  = $_REQUEST['keyword'];
+       $category = $_REQUEST['category'];
 
+       $tablePost = "tbl_post";
+       $tableCat = "tbl_catergory";
+       $this->load->view('header');
+       $catModel = $this->load->model("CatModel");
+       $data['catlistforsearch'] = $catModel->catList($tableCat);
+       $this->load->view('search', $data);
+
+       $postModel = $this->load->model("PostModel");
+       $data['postBySearch'] = $postModel->postBySearch($tablePost, $keyword, $category);
+       $this->load->view("searchResult", $data);
+      
+       $data['catList'] = $catModel->catList($tableCat);
+       $data['leatestPost'] = $postModel->getLeatestPost( $tablePost);
+       $this->load->view('saidbar', $data);
+       $this->load->view('footer');
+    }
 
 
  }

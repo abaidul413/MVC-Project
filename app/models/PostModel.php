@@ -33,6 +33,17 @@ class PostModel extends MainModel
 		$sql = "select * from $table order by id desc limit 5";
 		return $this->db->select($sql);
 	}
+
+	public function postBySearch($tablePost, $keyword, $category)
+	{
+		if(isset($keyword) && !empty($keyword))
+		 {
+		$sql = "SELECT * FROM $tablePost WHERE post_title LIKE '%$keyword%' OR post_content LIKE '%$keyword%' ";
+	    }elseif (isset($category)) {
+	    	$sql = "SELECT * FROM $tablePost WHERE category = $category";
+	    }
+		return $this->db->select($sql);
+	}
 }
 
 ?>
