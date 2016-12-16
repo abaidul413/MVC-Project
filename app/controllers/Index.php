@@ -12,36 +12,39 @@
 
     public function home()
     {
+    	$data = array();
+        $tablePost = "tbl_post";
+        $tableCat = "tbl_catergory";
     	$this->load->view('header');
-    	$this->load->view('search');
+
+        $catModel = $this->load->model("CatModel");
+        $data['catlistforsearch'] = $catModel->catList($tableCat);
+    	$this->load->view('search', $data);
         
-        $data = array();
-        $table = "tbl_post";
         $postModel = $this->load->model("PostModel");
-        $data['allPost'] = $postModel->getAllPost($table);
+        $data['allPost'] = $postModel->getAllPost($tablePost);
     	$this->load->view('content', $data);
         
-        $tableCat = "tbl_catergory";
-        $catModel = $this->load->model("CatModel");
         $data['catList'] = $catModel->catList($tableCat);
-        $data['leatestPost'] = $postModel->getLeatestPost( $table);
+        $data['leatestPost'] = $postModel->getLeatestPost( $tablePost);
     	$this->load->view('saidbar', $data);
     	$this->load->view('footer');
     }
 
     public function postDetails($id)
     {
-       $this->load->view('header');
-       $this->load->view('search');
-
        $data = array();
        $tablePost = "tbl_post";
-       $tableCat  = "tbl_catergory";
+       $tableCat = "tbl_catergory";
+       $this->load->view('header');
+       $catModel = $this->load->model("CatModel");
+       $data['catlistforsearch'] = $catModel->catList($tableCat);
+       $this->load->view('search', $data);
+
        $postModel = $this->load->model("PostModel");
        $data['postById'] = $postModel->getPostById($tablePost, $tableCat, $id);
        $this->load->view("postDetails",$data);
        
-       $catModel = $this->load->model("CatModel");
        $data['catList'] = $catModel->catList($tableCat);
        $data['leatestPost'] = $postModel->getLeatestPost( $tablePost);
        $this->load->view('saidbar', $data);
@@ -51,17 +54,18 @@
 
     public function getPostByCat($id)
     {
-       $this->load->view('header');
-       $this->load->view('search');
-       
        $data = array();
        $tablePost = "tbl_post";
-       $tableCat  = "tbl_catergory";
+       $tableCat = "tbl_catergory";
+       $this->load->view('header');
+       $catModel = $this->load->model("CatModel");
+       $data['catlistforsearch'] = $catModel->catList($tableCat);
+       $this->load->view('search', $data);
+
        $postModel = $this->load->model("PostModel");
        $data['postByCat'] = $postModel->postByCat($tablePost, $tableCat, $id);
        $this->load->view("allPostByCat", $data);
-       
-       $catModel = $this->load->model("CatModel");
+      
        $data['catList'] = $catModel->catList($tableCat);
        $data['leatestPost'] = $postModel->getLeatestPost( $tablePost);
        $this->load->view('saidbar', $data);
