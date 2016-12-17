@@ -37,16 +37,12 @@ class Main
 			$this->controllerName = $this->url[0];
 			$fileName = $this->controllerPath.$this->controllerName.".php";
 			if (file_exists($fileName)) {
-				include "$fileName";
+				include $fileName;
 			if (class_exists($this->controllerName)) {
 				$this->controller = new $this->controllerName();
-			} else {
-				header("Location:".BASE_URL."/Index");
-			}
+			} else {header("Location:".BASE_URL."/Index");}
 			
-			} else {
-				header("Location:".BASE_URL."/Index");
-			}
+			} else {header("Location:".BASE_URL."/Index");}
 
 		}
 		
