@@ -122,9 +122,15 @@ class Admin extends MainController
 
      public function addArticle()
      {
+     	$data = array();
+     	$tableCat = "tbl_catergory";
      	$this->load->view("Admin/header");
 	    $this->load->view("Admin/sidebar");
-    	$this->load->view("Admin/addPost");
+
+        $catModel = $this->load->model("CatModel");
+        $data['catList'] = $catModel->catList($tableCat);
+
+    	$this->load->view("Admin/addPost", $data);
     	$this->load->view("Admin/footer");
 
      }
@@ -150,12 +156,57 @@ class Admin extends MainController
 
      public function insertPost()
      {
+     	$form = $this->load->validation("Form");
+     	$form->post("post_title")
+     	     ->isEmpty()
+     	     ->length(10, 500);
+
+     	$form->post("post_content")
+     	     ->isEmpty();
+     	
+     	$form->post("category")
+     	     ->isEmptyCat(); 
+
+    if ($form->submit()) {
+    	$tablePost    = "tbl_post"; 
+     	$post_title   = $form->values['post_title'];
+     	$post_content = $form->values['post_content'];
+     	$category     = $form->values['category'];
+
+     	$data = array(
+     		  'post_title'   => $post_title,
+     		  'post_content' => $post_content,
+     		  'category'     => $category
+     		);
+
+     	$postModel = $this->load->model("PostModel");
+     	$result    = $postModel->insertPost($tablePost, $data);
+     	$message = array();
+        if($result == 1){
+          $message['msg']  = "Post Added Successfully";
+        }else{
+           $message['msg'] = "Failed to added Post";
+        }
+        $url = BASE_URL."/Admin/articlList?msg=".urlencode(serialize($message));
+        header("Location:$url");
+    } else {
+
+    	$data = array();
+    	$data['errorsPost'] = $form->errors;
+     	$tableCat = "tbl_catergory";
+     	$this->load->view("Admin/header");
+	    $this->load->view("Admin/sidebar");
+
+        $catModel = $this->load->model("CatModel");
+        $data['catList'] = $catModel->catList($tableCat);
+
+    	$this->load->view("Admin/addPost", $data);
+    	$this->load->view("Admin/footer");
+    }
+    
      	
      }
-
-
-
+        
 }
-
 
 ?>

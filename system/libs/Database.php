@@ -35,7 +35,7 @@ class Database extends PDO{
        $stmt = $this->prepare($sql);
 
        foreach($data as $key => $value) {
-        $stmt->bindParam(":$key", $value);
+        $stmt->bindValue(":$key", $value);
        }
        return $stmt->execute();
 	}

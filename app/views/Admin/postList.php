@@ -3,8 +3,17 @@
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.js"></script>
 
 <h2>All Post List</h2>
+<?php 
+ if(!empty($_GET['msg']))
+ {
+ 	$msg = unserialize(urldecode($_GET['msg']));
+ 	foreach ($msg as $key => $value) {
+ 	 echo "<span style='color:green; font-weight: bold;'>".$value."</span>";
+ 	}
+ }
+?>
 
-<table id="table_id" class="display">
+<table id="table_id" class="display" data-page-length = '5'>
    <thead>
 	<tr>
 		<th width="05%">No</th>
