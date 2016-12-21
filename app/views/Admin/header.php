@@ -25,7 +25,7 @@ a{color:#3399FF;}
 table.tblone tr:nth-child(2n+1){background:#fff;height:30px;}
 table.tblone tr:nth-child(2n){background:#fdf0f1;height:30px;}
 
-input[type="text"] {border:1px solid #ddd;margin-bottom:5px;padding:5px;width:228px;font-size:16px}
+input[type="text"],.category {border:1px solid #ddd;margin-bottom:5px;padding:5px;width:350px;font-size:16px}
 input[type="submit"]{cursor: pointer}
 
 .adminleft {width: 200px;float: left;border-right: 1px solid #ddd;margin-right: 10px;padding-right: 10px;}

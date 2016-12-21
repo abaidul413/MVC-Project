@@ -7,7 +7,8 @@
 			<input type="text" name="keyword" placeholder="Search here...">
 			<select class="catsearch" name="category">
 			  <option>Select One</option>
-			<?php foreach ($catlistforsearch as $key => $value) {
+			<?php 
+			 foreach ($catlistforsearch as $key => $value) {
 
              ?>
 			  <option value="<?php echo $value['id'] ?>"><?php echo $value['cat_name']; ?></option>

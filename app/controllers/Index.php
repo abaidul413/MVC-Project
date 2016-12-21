@@ -84,7 +84,7 @@
        $keyword  = $_REQUEST['keyword'];
        $category = $_REQUEST['category'];
 
-       $tablePost = "tbl_post";
+       $tablePost= "tbl_post";
        $tableCat = "tbl_catergory";
        $this->load->view('header');
        $catModel = $this->load->model("CatModel");

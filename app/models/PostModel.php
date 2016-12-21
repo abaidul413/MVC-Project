@@ -16,6 +16,12 @@ class PostModel extends MainModel
 		return $this->db->select($sql);
 	}
 
+	public function getPostAll($table)
+	{
+		$sql = "select * from $table order by id desc";
+		return $this->db->select($sql);
+	}
+
 	public function getPostById($tablePost, $tableCat, $id)
 	{
 		$sql = "SELECT $tablePost.*, $tableCat.cat_name FROM $tablePost INNER JOIN $tableCat ON $tablePost.category = $tableCat.id WHERE $tablePost.id = $id";
