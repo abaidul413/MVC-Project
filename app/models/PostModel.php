@@ -22,6 +22,11 @@ class PostModel extends MainModel
 		return $this->db->select($sql);
 	}
 
+	public function PostById($tablePost, $id){
+		$sql = "select * from $tablePost where id = $id";
+		return $this->db->select($sql);
+	}
+
 	public function getPostById($tablePost, $tableCat, $id)
 	{
 		$sql = "SELECT $tablePost.*, $tableCat.cat_name FROM $tablePost INNER JOIN $tableCat ON $tablePost.category = $tableCat.id WHERE $tablePost.id = $id";
@@ -54,6 +59,16 @@ class PostModel extends MainModel
 	public function insertPost($table, $data)
     {
     	return $this->db->insert($table, $data);
+    }
+
+    public function updatePost($table, $data, $cond)
+    {
+    	return $this->db->update($table, $data, $cond);
+    }
+
+     public function delPostById($table, $cond)
+    {
+    	return $this->db->delete($table, $cond);
     }
 }
 

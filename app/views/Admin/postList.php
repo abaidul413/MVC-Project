@@ -54,8 +54,8 @@
 	    </td>
 
 		<td>
-			<a href="">Edit</a> ||
-			<a href="">Delete</a>
+			<a href="<?php echo BASE_URL ?>/Admin/editPost/<?php echo $value['id']; ?>">Edit</a>||
+			<a onclick="return confirm('Are Your Sure to Delete Data!!')" href="<?php echo BASE_URL ?>/Admin/deletePost/<?php echo $value['id']; ?>">Delete</a>
 		</td>
 	</tr>
  <?php } ?>

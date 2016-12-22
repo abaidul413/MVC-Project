@@ -1,6 +1,14 @@
 
 <aside class="adminleft">
 	<div class="widget">
+		<h3>Manage User</h3>
+	 <ul>
+		<li><a href="<?php echo BASE_URL ?>/UserController/makeUser">Make User</a></li>
+		<li><a href="<?php echo BASE_URL ?>/UserController/userList">User List</a></li>
+	 </ul>
+	</div>
+
+	<div class="widget">
 		<h3>User Option</h3>
 		<ul>
 			<li><a href="<?php echo BASE_URL ?>/Admin">Home</a></li>

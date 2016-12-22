@@ -204,8 +204,73 @@ class Admin extends MainController
     	$this->load->view("Admin/footer");
     }
     
-     	
-     }
+  }
+
+  public function editPost($id){
+  	    $data = array();
+     	$tablePost = "tbl_post";
+     	$tableCat  = "tbl_catergory";
+
+        $this->load->view("Admin/header");
+	    $this->load->view("Admin/sidebar");
+ 
+        $postModel = $this->load->model("PostModel");
+        $data["getPostById"] = $postModel->PostById($tablePost, $id);
+
+        $catModel = $this->load->model("CatModel");
+        $data['catlist'] = $catModel->catList($tableCat);
+
+    	$this->load->view("Admin/postEdit",$data);
+    	$this->load->view("Admin/footer");
+  }
+
+  public function updatePost(){
+  	$form = $this->load->validation("Form");
+  	    $form->post("id");
+     	$form->post("post_title");
+     	$form->post("post_content");
+     	$form->post("category");
+
+     	$tablePost    = "tbl_post";
+     	$id = $form->values['id'];
+     	$post_title   = $form->values['post_title'];
+     	$post_content = $form->values['post_content'];
+     	$category     = $form->values['category'];
+        $con = "id = $id";
+     	$data = array(
+     		  'post_title'   => $post_title,
+     		  'post_content' => $post_content,
+     		  'category'     => $category
+     		);
+
+     	$postModel = $this->load->model("PostModel");
+     	$result    = $postModel->updatePost($tablePost, $data, $con);
+
+     	$message = array();
+        if($result == 1){
+          $message['msg']  = "Post Updated Successfully";
+        }else{
+           $message['msg'] = "Failed to Update Post";
+        }
+        $url = BASE_URL."/Admin/articlList?msg=".urlencode(serialize($message));
+        header("Location:$url");
+  }
+
+  public function deletePost($id)
+  {
+  	$tablePost    = "tbl_post";
+	$cond = "id=$id";
+	$postModel = $this->load->model("PostModel");
+	$result = $postModel->delPostById($tablePost, $cond);
+	$message  =array();
+	if ($result == 1) {
+		$message['msg'] = "Post Delete Successfully!!";
+	} else {
+		$message['msg'] = "Failed To Delete Post!!";
+	}
+   $url = BASE_URL."/Admin/articlList?msg=".urlencode(serialize($message));
+   header("Location:$url");
+  }
         
 }
 
