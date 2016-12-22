@@ -271,6 +271,54 @@ class Admin extends MainController
    $url = BASE_URL."/Admin/articlList?msg=".urlencode(serialize($message));
    header("Location:$url");
   }
+
+  public function uiOption(){
+        $data = array();
+        $tableUi = "tbl_color";
+        $uiModel = $this->load->model("UiModel");
+        $data['color']  = $uiModel->getColor($tableUi);
+        $this->load->view("Admin/header", $data);
+        $this->load->view("Admin/sidebar");
+        $this->load->view('Admin/changUI');
+        $this->load->view("Admin/footer");
+  }
+
+  public function chahngUiBack()
+  {
+    $form = $this->load->validation("Form");
+        $form->post("color");
+
+        $tableUi = "tbl_color";
+        $color   = $form->values['color'];
+        $con     = 1;
+        $data = array(
+              'color' => $color
+            );
+
+        $uiModel = $this->load->model("UiModel");
+        $result  = $uiModel->updateColor($tableUi, $data, $con);
+
+        $message = array();
+        if($result == 1){
+          $message['msg']  = "Background Change Successfully";
+        }else{
+           $message['msg'] = "Failed to Change Background";
+        }
+        $url = BASE_URL."/Admin/uiOption?msg=".urlencode(serialize($message));
+        header("Location:$url");
+  }
+
+  // public function getBackColor()
+  // {
+  //   $data = array();
+  //   $tableUi = "tbl_color";
+  //   $uiModel = $this->load->model("UiModel");
+  //   $data['color']  = $uiModel->getColor($tableUi);
+  //   $this->load->view("Admin/header", $data);
+  //   $this->load->view("Admin/sidebar");
+  //   $this->load->view('Admin/changUI');
+  //   $this->load->view("Admin/footer");
+  // }
         
 }
 

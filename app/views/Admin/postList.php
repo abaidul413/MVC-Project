@@ -19,8 +19,8 @@
 		<th width="05%">No</th>
 		<th width="25%">Post Title</th>
 		<th width="30%">Post Content</th>
-		<th width="20%">Category Name</th>
-		<th width="20%">Action</th>
+		<th width="15%">Category Name</th>
+		<th width="25%">Action</th>
 	</tr>
   </thead>
   <tbody>
@@ -52,11 +52,14 @@
 		   ?>
 		  	
 	    </td>
-
+  <?php if(Session::get('level') == 1){ ?>
 		<td>
 			<a href="<?php echo BASE_URL ?>/Admin/editPost/<?php echo $value['id']; ?>">Edit</a>||
 			<a onclick="return confirm('Are Your Sure to Delete Data!!')" href="<?php echo BASE_URL ?>/Admin/deletePost/<?php echo $value['id']; ?>">Delete</a>
 		</td>
+  <?php }else { ?>
+     <td>Not Parmited</td>
+  <?php } ?>
 	</tr>
  <?php } ?>
 </tbody>

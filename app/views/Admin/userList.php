@@ -41,7 +41,7 @@ $i = 0;
 			
 		</td>
 		<td>
-			<a onclick="return confirm('Are Your Sure to Delete Data!!')" href="<?php echo BASE_URL ?>/User/deleteUserById/<?php echo $value['id']; ?>">Delete</a>
+			<a onclick="return confirm('Are Your Sure to Delete Data!!')" href="<?php echo BASE_URL ?>/UserController/deleteUserById/<?php echo $value['id']; ?>">Delete</a>
 		</td>
 	</tr>
 <?php } ?>

@@ -60,6 +60,22 @@
 		$this->load->view("Admin/userList",$data);
 		$this->load->view("Admin/footer");
   	}
+
+  	public function deleteUserById($id){
+  		$tableUser = "tbl_user";
+    	$cond = "id=$id";
+    	$userModel    = $this->load->model('UserModel');
+    	$result = $userModel->delUserById($tableUser, $cond);
+
+    	$message = array();
+    	if ($result == 1) {
+    		$message['msg'] = "User Deleted Successfully!!";
+    	} else {
+    		$message['msg'] = "Failed To Delete User";
+    	}
+    	$url = BASE_URL."/UserController/userList?msg=".urlencode(serialize($message));
+       header("Location:$url");
+  	}
   }
 
  ?>
