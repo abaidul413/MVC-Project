@@ -1,13 +1,6 @@
 
 <aside class="adminleft">
-	<div class="widget">
-		<h3>Manage User</h3>
-	 <ul>
-		<li><a href="<?php echo BASE_URL ?>/UserController/makeUser">Make User</a></li>
-		<li><a href="<?php echo BASE_URL ?>/UserController/userList">User List</a></li>
-	 </ul>
-	</div>
-
+	
 	<div class="widget">
 		<h3>User Option</h3>
 		<ul>
@@ -15,6 +8,19 @@
 			<li><a href="<?php echo BASE_URL ?>/Login/logout">Logout</a></li>
 		</ul>
 	</div>
+<?php
+   if(Session::get('level') == 1)
+   {
+ ?>
+	<div class="widget">
+		<h3>Manage User</h3>
+	 <ul>
+		<li><a href="<?php echo BASE_URL ?>/UserController/makeUser">Make User</a></li>
+		<li><a href="<?php echo BASE_URL ?>/UserController/userList">User List</a></li>
+	 </ul>
+	</div>
+	
+<?php } ?>
 
 	<div class="widget">
 		<h3>Category Option</h3>
